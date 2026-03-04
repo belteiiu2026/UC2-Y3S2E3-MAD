@@ -8,10 +8,23 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: ElevatedButton(onPressed: (){
-          final route = MaterialPageRoute(builder: (BuildContext context) => MainScreen());
-          Navigator.pushReplacement(context, route);
-        }, child: Text("Get Start")),
+        child: Column(
+          children: [
+            Expanded(child: Image.asset("assets/images/beltei_iu.png", height: 200, width: 200,), ),
+            Padding(padding: EdgeInsets.only(left: 16, right: 16, bottom: 16),
+            child: SizedBox(
+              height: 40,
+              width: MediaQuery.of(context).size.width,
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.deepPurple
+                  ),
+                  onPressed: (){
+                    Navigator.pushReplacementNamed(context, "/mainScreen");
+                  }, child: Text("Get Start", style: TextStyle(color: Colors.white),)),
+            ),),
+          ],
+        )
       ),
     );
   }

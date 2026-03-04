@@ -23,9 +23,19 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Hi, MAD"),
+
+        title: Row(
+          children: [
+            Icon(Icons.location_on, color: Colors.white,),
+            Text("Phnom Penh", style: TextStyle(fontSize: 16, color: Colors.white),)
+          ],
+        ),
         elevation: 0.5,
-        centerTitle: false,
+        backgroundColor: Colors.deepPurple,
+        actions: [
+          Icon(Icons.notifications, color: Colors.white,),
+          Padding(padding: EdgeInsets.only(right: 16), child: Icon(Icons.more_vert, color: Colors.white,),)
+        ],
       ),
       body: FutureBuilder(
           future: _loadProducts(),
@@ -52,18 +62,21 @@ class _HomeScreenState extends State<HomeScreen> {
             // Has Data
 
             List<String> data = snapshot.data;
-            return ListView.builder(
+            return ListView.separated(
                 itemCount: data.length,
                 itemBuilder: (BuildContext context, int index){
                     String product = data[index];
                     return ListTile(
                       title: Text("$product"),
                       subtitle: Text("1\$"),
-                      leading: Icon(Icons.favorite),
+                      leading: Image.asset("assets/images/book1.jpg"),
                       trailing: Icon(Icons.navigate_next),
                     );
-
-                });
+                },
+                separatorBuilder: (BuildContext context, int index){
+                  return Divider();
+                }
+                );
           })
     );
   }

@@ -35,20 +35,22 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
 
     List<BottomNavigationBarItem> bottomNavBarItems = [
-      BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home", backgroundColor: Colors.blue),
-      BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favorite", backgroundColor: Colors.blue),
-      BottomNavigationBarItem(icon: Icon(Icons.notifications), label: "Notification", backgroundColor: Colors.blue),
-      BottomNavigationBarItem(icon: Icon(Icons.account_circle_rounded), label: "Profile", backgroundColor: Colors.blue)
+      BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+      BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favorite"),
+      BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: "Cart"),
+      BottomNavigationBarItem(icon: Icon(Icons.account_circle_rounded), label: "Profile")
     ];
 
     final bottomNavBar = BottomNavigationBar(
-      fixedColor: Colors.amber,
+      fixedColor: Colors.red,
+      type: BottomNavigationBarType.fixed,
       items: bottomNavBarItems,
       currentIndex: _indexSelectedItems,
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.deepPurple,
       showSelectedLabels: true,
       showUnselectedLabels: true,
       selectedFontSize: 16,
+      unselectedItemColor: Colors.white,
       onTap: (index){
         _onTabClick(index);
       },
